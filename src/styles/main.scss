@@ -59,6 +59,7 @@ $bordercheck: 1px solid transparent;
                 padding: 0 .5vmax;
                 color: rgb(47, 47, 47);
                 background-color: transparent;
+                border-radius: .3vmax;
             }
 
             .slr-txt:hover,
@@ -121,13 +122,188 @@ $bordercheck: 1px solid transparent;
                     padding: 0 .5vmax;
                     color: #F6F6F6;
                     background-color: transparent;
-                    text-align: center;
+                    text-align: right;
                 }
 
-                .description{
+                .description {
                     width: 30vmax;
                     text-align: left;
                 }
+            }
+        }
+
+        .item-list-cnt {
+            height: auto;
+            width: 100%;
+            @include flex(center, center, row);
+
+            .item-list {
+                height: 5vmax;
+                width: 90%;
+                border-bottom: 1px solid #111;
+                @include flex(center, center, row);
+                gap: .1vmax;
+
+                .itemDescription {
+                    width: 30vmax;
+                    height: 3.5vmax;
+                    border: none;
+                    resize: none;
+                    font-family: 'Arimo', sans-serif;
+                    font-size: 1vmax;
+                    padding: .5vmax .5vmax;
+                    border-radius: .3vmax;
+                    background-color: transparent;
+                }
+
+                .itemDescription::placeholder {
+                    font-size: .9vmax;
+                }
+
+                .itemDescription:hover,
+                .itemDescription:focus {
+                    outline: 2px solid #068767;
+                }
+
+                .qtyValue,
+                .rateValue,
+                .taxValue,
+                .amountValue {
+                    font-size: 1vmax;
+                    font-family: 'Arimo', sans-serif;
+                    height: 3.5vmax;
+                    width: 6.5vmax;
+                    border: none;
+                    padding: 0 .5vmax;
+                    text-align: right;
+                    border-radius: .3vmax;
+                    background-color: transparent;
+                }
+
+                .qtyValue:hover,
+                .qtyValue:focus,
+                .rateValue:hover,
+                .rateValue:focus,
+                .taxValue:hover,
+                .taxValue:focus,
+                .amountValue:hover,
+                .amountValue:focus {
+                    outline: 2px solid #068767;
+                }
+            }
+        }
+
+        .cal-cnt {
+            height: 10vmax;
+            width: 100%;
+            @include flex(center, center, row);
+
+            .lft-btn,
+            .rigt-cal {
+                height: 100%;
+                width: 50%;
+
+            }
+
+            .lft-btn {
+                padding: 1vmax 2vmax;
+            }
+
+            .add-btn {
+                height: 2vmax;
+                width: 10vmax;
+                background: rgba(6, 135, 103, 0);
+                border-radius: .3vmax;
+                border: none;
+                @include flex(center, center, row);
+                color: #068767;
+                font-size: 1vmax;
+                font-family: 'Arimo', sans-serif;
+                text-decoration: none;
+                transition: 0.3s;
+                @include flex(center, center, row);
+                gap: .3vmax;
+                cursor: pointer;
+            }
+
+            .add-btn:hover {
+                color: #064a39;
+            }
+
+            .add-icon {
+                height: 1.1vmax;
+                width: 1.1vmax;
+                background-image: url(../assets/add.png);
+                background-size: contain;
+                background-position: center;
+            }
+
+            .rigt-cal{
+                @include flex(center, center, column);
+            }
+
+            .fnl-dta{
+                width: 100%;
+                height: 33%;
+
+                @include flex(center, center, row);
+
+                .fnl-inpt, .fnl-data{
+                    height: 2.5vmax;
+                    width: 8vmax;
+                    padding: 0 .5vmax;
+                    font-size: .9vmax;
+                    font-family: 'Arimo', sans-serif;
+                    background-color: transparent;
+                    border: none;
+                    border-radius: .3vmax;
+                }
+
+                .fnl-inpt:hover, .fnl-inpt:focus{
+                outline: 2px solid #068767;
+            }
+
+                .fnl-data{
+                    cursor: not-allowed;
+                }
+            }
+        }
+
+        .fnl-txt{
+            height: 20vmax;
+            width: 100%;
+            padding: 2vmax 2vmax;
+
+            .fnl-nt-inpt{
+                height: 2vmax;
+                width: 100%;
+                outline: none;
+                padding: .5vmax .5vmax;
+                background-color: transparent;
+                border: none;
+                border-radius: .3vmax;
+            }
+
+            .fnl-nt-inpt:hover, .fnl-nt-inpt:focus{
+                outline: 2px solid #068767;
+            }
+
+            .fnl-txt-area{
+                height: 4vmax;
+                width: 100%;
+                outline: none;
+                padding: .5vmax .5vmax;
+                background-color: transparent;
+                border: none;
+                border-radius: .3vmax;
+                font-family: 'Arimo', sans-serif;
+                color: rgb(47, 47, 47);
+                border-radius: .3vmax;
+                resize: vertical;
+            }
+
+            .fnl-txt-area:hover, .fnl-txt-area:focus{
+                outline: 2px solid #068767;
             }
         }
     }
