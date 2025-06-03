@@ -1,0 +1,56 @@
+@import './mixins';
+
+.hd {
+    position: fixed;
+    height: 4vmax;
+    width: 100%;
+    background-color: #FAFAFA;
+    border-bottom: 1px solid #EEEEEE;
+    @include flex(center, space-between, row);
+    padding: 0 2vmax;
+    filter: drop-shadow(0 .1vmax 1vmax #d6d6d6);
+
+    .logo {
+        font-size: 2vmax;
+        font-family: 'Comfortaa', cursive;
+        text-decoration: none;
+        font-weight: 600;
+        color: #111;
+        user-select: none;
+    }
+
+    .btn-wrap {
+        height: 2.5vmax;
+        width: 18vmax;
+        @include flex(center, space-evenly, row);
+    }
+
+    .sign-in,
+    .sign-up {
+        background: rgba(6, 135, 103, 0);
+        border-radius: .4vmax;
+        border: 2px solid #068767;
+        @include flex(center, center, row);
+        width: 8vmax;
+        height: 2.3vmax;
+        color: #068767;
+        font-size: 1vmax;
+        font-family: 'Arimo', sans-serif;
+        text-decoration: none;
+        transition: 0.3s;
+    }
+
+    .sign-in:hover{
+        background: #043c2e;
+        color: #FAFAFA;
+    }
+    
+    .sign-up{
+        background: #068767;
+        color: #FAFAFA;
+    }
+
+    .sign-up:hover {
+        background: #043c2e;
+    }
+}

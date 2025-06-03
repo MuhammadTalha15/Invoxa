@@ -1,0 +1,134 @@
+@import './mixins';
+
+$bordercheck: 1px solid transparent;
+
+.mn {
+    height: auto;
+    width: 100%;
+    background-color: #F6F6F6;
+    padding: 6vmax 0;
+    @include flex(center, center, row);
+
+    .inv-bldr {
+        width: 50vmax;
+        height: auto;
+        border: 1px solid #d4d4d4;
+        background-color: #FAFAFA;
+
+        .invc-hdr {
+            height: 10vmax;
+            width: 100%;
+            @include flex(center, right, row);
+            padding: 0 2vmax;
+            border: $bordercheck;
+
+
+            .inv-title {
+                height: 5vmax;
+                width: 20vmax;
+                background-color: transparent;
+                text-align: right;
+                font-size: 3vmax;
+                font-family: 'Arimo', sans-serif;
+                border: none;
+                padding: .5vmax;
+                border-radius: .3vmax;
+            }
+
+            .inv-title:focus,
+            .inv-title:hover {
+                outline: 2px solid #068767;
+
+            }
+        }
+
+        .slr {
+            height: 15vmax;
+            width: 100%;
+            @include flex(flex-start, center, column);
+            gap: .1vmax;
+            padding: 0 2vmax;
+            border: $bordercheck;
+
+            .slr-txt {
+                font-size: .9vmax;
+                font-family: 'Arimo', sans-serif;
+                height: 1.8vmax;
+                width: 20vmax;
+                border: none;
+                padding: 0 .5vmax;
+                color: rgb(47, 47, 47);
+                background-color: transparent;
+            }
+
+            .slr-txt:hover,
+            .slr-txt:focus {
+                outline: 2px solid #068767;
+            }
+
+            .highlight {
+                color: #111;
+                font-weight: 600;
+            }
+        }
+
+        .client {
+            padding: 0 0;
+            flex-wrap: wrap;
+            @include flex(flex-start, flex-start, column);
+
+            .left,
+            .right {
+                height: 100%;
+                width: 50%;
+                border: $bordercheck;
+                padding: 2vmax 2vmax;
+                @include flex(flex-start, flex-start, column);
+
+                .invc-label {
+                    font-size: 1vmax;
+                    padding: 0 .5vmax;
+                    font-family: 'Arimo', sans-serif;
+                }
+            }
+
+            .right {
+                gap: .4vmax;
+
+                .date {
+                    color-scheme: #068767;
+                }
+            }
+        }
+
+        .table-hdr {
+            height: 3vmax;
+            width: 100%;
+            @include flex(center, center, row);
+
+            .tble-tp {
+                height: 3vmax;
+                width: 90%;
+                background-color: #0a0a0a;
+                @include flex(center, center, row);
+
+                .tble-des {
+                    font-size: 1vmax;
+                    font-family: 'Arimo', sans-serif;
+                    height: 1.8vmax;
+                    width: 7vmax;
+                    border: none;
+                    padding: 0 .5vmax;
+                    color: #F6F6F6;
+                    background-color: transparent;
+                    text-align: center;
+                }
+
+                .description{
+                    width: 30vmax;
+                    text-align: left;
+                }
+            }
+        }
+    }
+}
