@@ -1,10 +1,12 @@
 import { useState, useEffect } from 'react'
 import '../styles/main.scss'
 import ControlPanel from './ControlPanel'
+import Invoice from './Inovoice'
 
 const Main = () => {
 
     const [title, setTitle] = useState('INVOICE');
+    const [invoiceNumber, setInvoice] = useState('Invoice# ');
 
     const [sellerCompany, setComp] = useState('');
     const [sellerName, setSellerName] = useState('');
@@ -18,7 +20,9 @@ const Main = () => {
     const [receiverCity, setRecCity] = useState('');
     const [clientCountry, setClientCountry] = useState('Pakistan');
 
-    const [invoiceNumber, setInvoice] = useState('Invoice# ');
+    const [date, setDate] = useState('');
+    const [dueDate, setDueDate] = useState('');
+
 
     const [itemDesc, setDescription] = useState(`Item Description`);
     const [qty, setQty] = useState(`Qty`);
@@ -105,9 +109,9 @@ const Main = () => {
                         <div className="right">
                             <input id="invoiceNumber" name="invoiceNumber" className='slr-txt highlight' type="text" value={invoiceNumber} onChange={(e) => setInvoice(e.target.value)} />
                             <label htmlFor="invc-date" className='invc-label'>Invoice Date</label>
-                            <input className='slr-txt date' type="date" name="" id="invc-date" />
+                            <input className='slr-txt date' type="date" name="" id="invc-date" value={date} onChange={(e) => setDate(e.target.value)} />
                             <label htmlFor="due-data" className='invc-label'>Due Date</label>
-                            <input className='slr-txt date' type="date" name="" id="due-data" />
+                            <input className='slr-txt date' type="date" name="" id="due-data" value={dueDate} onChange={(e) => setDueDate(e.target.value)} />
                         </div>
                     </div>
                     <div className="table-hdr">
@@ -186,6 +190,7 @@ const Main = () => {
 
                 <ControlPanel onClick={handleClick} />
             </main>
+            <Invoice titleProp={title} invoiceNumberProp={invoiceNumber} companyNameProp={sellerCompany} sellerNameProp={sellerName} companyAddressProp={companyAddress} sellerCityProp={sellerCity} sellerCountryProp={country}  receiverBillProp={receiverBill} clientCompProp={clientComp} clientAddressProp={clientAddress} receiverCityProp={receiverCity} clientCountryProp={clientCountry} dateProp={date} dueDateProp={dueDate} itemDescriptionProp={itemDesc} qtyProp={qty} taxProp={tax} rateProp={rate} amountProp={amount} items={items} finalSubtotalProp={finalSubTotal} finalAllTotalProp={finalAllTotal}/>
         </>
     )
 }
