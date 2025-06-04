@@ -1,0 +1,32 @@
+@import './mixins';
+@import './variables';
+
+.panel{
+    position: fixed;
+    height: 40vmax;
+    width: 23vmax;
+    right: 0;
+    background-color: $background;
+    border: 2px solid $borderColor;
+    
+    .download-btn{
+        background: rgba(6, 135, 103, 0);
+        border-radius: .4vmax;
+        border: 2px solid $secondaryColorFirst;
+        @include flex(center, center, row);
+        width: 12vmax;
+        height: 2.3vmax;
+        color: $secondaryColorFirst;
+        font-size: 1vmax;
+        font-family: 'Arimo', sans-serif;
+        text-decoration: none;
+        transition: 0.3s;
+        cursor: pointer;
+    }
+
+    .download-btn:hover{
+        background: $secondaryColorSecond;
+        border: 2px solid $secondaryColorSecond;
+        color: #FAFAFA;
+    }
+}

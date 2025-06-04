@@ -1,19 +1,20 @@
 @import './mixins';
+@import './variables';
 
 $bordercheck: 1px solid transparent;
 
 .mn {
     height: auto;
     width: 100%;
-    background-color: #F6F6F6;
+    background-color: $mainbackgroundColor;
     padding: 6vmax 0;
-    @include flex(center, center, row);
+    @include flex(flex-start, center, row);
 
     .inv-bldr {
         width: 50vmax;
         height: auto;
-        border: 1px solid #d4d4d4;
-        background-color: #FAFAFA;
+        border: 1px solid $borderColor;
+        background-color: $background;
 
         .invc-hdr {
             height: 10vmax;
@@ -37,7 +38,7 @@ $bordercheck: 1px solid transparent;
 
             .inv-title:focus,
             .inv-title:hover {
-                outline: 2px solid #068767;
+                outline: 2px solid $secondaryColorFirst;
 
             }
         }
@@ -64,7 +65,7 @@ $bordercheck: 1px solid transparent;
 
             .slr-txt:hover,
             .slr-txt:focus {
-                outline: 2px solid #068767;
+                outline: 2px solid $secondaryColorFirst;
             }
 
             .highlight {
@@ -97,7 +98,7 @@ $bordercheck: 1px solid transparent;
                 gap: .4vmax;
 
                 .date {
-                    color-scheme: #068767;
+                    color-scheme: $secondaryColorFirst;
                 }
             }
         }
@@ -110,7 +111,7 @@ $bordercheck: 1px solid transparent;
             .tble-tp {
                 height: 3vmax;
                 width: 90%;
-                background-color: #0a0a0a;
+                background-color: $tableTopColor;
                 @include flex(center, center, row);
 
                 .tble-des {
@@ -120,7 +121,7 @@ $bordercheck: 1px solid transparent;
                     width: 7vmax;
                     border: none;
                     padding: 0 .5vmax;
-                    color: #F6F6F6;
+                    color: $mainbackgroundColor;
                     background-color: transparent;
                     text-align: right;
                 }
@@ -135,7 +136,7 @@ $bordercheck: 1px solid transparent;
         .item-list-cnt {
             height: auto;
             width: 100%;
-            @include flex(center, center, row);
+            @include flex(center, center, column);
 
             .item-list {
                 height: 5vmax;
@@ -162,7 +163,7 @@ $bordercheck: 1px solid transparent;
 
                 .itemDescription:hover,
                 .itemDescription:focus {
-                    outline: 2px solid #068767;
+                    outline: 2px solid $secondaryColorFirst;
                 }
 
                 .qtyValue,
@@ -188,7 +189,7 @@ $bordercheck: 1px solid transparent;
                 .taxValue:focus,
                 .amountValue:hover,
                 .amountValue:focus {
-                    outline: 2px solid #068767;
+                    outline: 2px solid $secondaryColorFirst;
                 }
             }
         }
@@ -216,7 +217,7 @@ $bordercheck: 1px solid transparent;
                 border-radius: .3vmax;
                 border: none;
                 @include flex(center, center, row);
-                color: #068767;
+                color: $secondaryColorFirst;
                 font-size: 1vmax;
                 font-family: 'Arimo', sans-serif;
                 text-decoration: none;
@@ -260,7 +261,7 @@ $bordercheck: 1px solid transparent;
                 }
 
                 .fnl-inpt:hover, .fnl-inpt:focus{
-                outline: 2px solid #068767;
+                outline: 2px solid $secondaryColorFirst;
             }
 
                 .fnl-data{
@@ -285,7 +286,7 @@ $bordercheck: 1px solid transparent;
             }
 
             .fnl-nt-inpt:hover, .fnl-nt-inpt:focus{
-                outline: 2px solid #068767;
+                outline: 2px solid $secondaryColorFirst;
             }
 
             .fnl-txt-area{
@@ -303,7 +304,7 @@ $bordercheck: 1px solid transparent;
             }
 
             .fnl-txt-area:hover, .fnl-txt-area:focus{
-                outline: 2px solid #068767;
+                outline: 2px solid $secondaryColorFirst;
             }
         }
     }
