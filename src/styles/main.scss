@@ -130,10 +130,15 @@ $bordercheck: 1px solid transparent;
                     width: 30vmax;
                     text-align: left;
                 }
+
+                .nonDescription{
+                    padding: 0 1.2vmax;
+                }
             }
         }
 
         .item-list-cnt {
+            // position: relative;
             height: auto;
             width: 100%;
             @include flex(center, center, column);
@@ -144,6 +149,28 @@ $bordercheck: 1px solid transparent;
                 border-bottom: 1px solid #111;
                 @include flex(center, center, row);
                 gap: .1vmax;
+
+                .delete-btn {
+                    // position: sticky;
+                    right: .8vmax;
+                    height: 1.2vmax;
+                    min-width: 1.2vmax;
+                    @include flex(center, center, row);
+                    border-radius: 50%;
+                    border: .15vmax solid rgb(224, 16, 16);
+                    color: rgb(224, 16, 16);
+                    font-size: .6vmax;
+                    font-family: 'Arimo', sans-serif;
+                    font-weight: 800;
+                    cursor: pointer;
+                    transition: 0.2s;
+                    // transform: translateX(1vmax);
+                    // margin: 0 .5vmax;
+                }
+
+                .delete-btn:hover {
+                    background-color: rgba(224, 16, 16, 0.238);
+                }
 
                 .itemDescription {
                     width: 30vmax;
@@ -239,17 +266,18 @@ $bordercheck: 1px solid transparent;
                 background-position: center;
             }
 
-            .rigt-cal{
+            .rigt-cal {
                 @include flex(center, center, column);
             }
 
-            .fnl-dta{
+            .fnl-dta {
                 width: 100%;
                 height: 33%;
 
                 @include flex(center, center, row);
 
-                .fnl-inpt, .fnl-data{
+                .fnl-inpt,
+                .fnl-data {
                     height: 2.5vmax;
                     width: 8vmax;
                     padding: 0 .5vmax;
@@ -260,22 +288,23 @@ $bordercheck: 1px solid transparent;
                     border-radius: .3vmax;
                 }
 
-                .fnl-inpt:hover, .fnl-inpt:focus{
-                outline: 2px solid $secondaryColorFirst;
-            }
+                .fnl-inpt:hover,
+                .fnl-inpt:focus {
+                    outline: 2px solid $secondaryColorFirst;
+                }
 
-                .fnl-data{
+                .fnl-data {
                     cursor: not-allowed;
                 }
             }
         }
 
-        .fnl-txt{
+        .fnl-txt {
             height: 20vmax;
             width: 100%;
             padding: 2vmax 2vmax;
 
-            .fnl-nt-inpt{
+            .fnl-nt-inpt {
                 height: 2vmax;
                 width: 100%;
                 outline: none;
@@ -285,11 +314,12 @@ $bordercheck: 1px solid transparent;
                 border-radius: .3vmax;
             }
 
-            .fnl-nt-inpt:hover, .fnl-nt-inpt:focus{
+            .fnl-nt-inpt:hover,
+            .fnl-nt-inpt:focus {
                 outline: 2px solid $secondaryColorFirst;
             }
 
-            .fnl-txt-area{
+            .fnl-txt-area {
                 height: 4vmax;
                 width: 100%;
                 outline: none;
@@ -303,9 +333,17 @@ $bordercheck: 1px solid transparent;
                 resize: vertical;
             }
 
-            .fnl-txt-area:hover, .fnl-txt-area:focus{
+            .fnl-txt-area:hover,
+            .fnl-txt-area:focus {
                 outline: 2px solid $secondaryColorFirst;
             }
         }
     }
+}
+
+.invoice-wrapper{
+    height: auto;
+    width: 100%;
+    background-color: $mainbackgroundColor;
+    padding: 5vmax 0;
 }

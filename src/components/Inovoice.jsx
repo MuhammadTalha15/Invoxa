@@ -23,9 +23,15 @@ const Invoice = ({
     rateProp,
     amountProp,
     finalSubtotalProp,
-    finalAllTotalProp}) => {
+    finalAllTotalProp,
+    noteHeadProp,
+    noteDataProp,
+    conditionsProp,
+    conditionsDataProp,
+    refProp
+}) => {
     return (
-        <div className="invoice">
+        <div className="invoice" ref={refProp}>
             <div className="invoice__header">
                 <div className="slr-details">
                     <h1 className="invoice__from company">{companyNameProp}</h1>
@@ -99,13 +105,13 @@ const Invoice = ({
             </div>
 
             <div className="invoice__notes">
-                <strong>Notes</strong>
-                <p>It was great doing business with you.</p>
+                <strong className="lstHead">{noteHeadProp}</strong>
+                <p>{noteDataProp}.</p>
             </div>
 
             <div className="invoice__terms">
-                <strong>Terms & Conditions</strong>
-                <p>Please make the payment by the due date.</p>
+                <strong className="lstHead">{conditionsProp}</strong>
+                <p>{conditionsDataProp}</p>
             </div>
 
             <div className="invoice__footer">1</div>

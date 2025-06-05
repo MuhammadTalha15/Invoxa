@@ -1,7 +1,10 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import '../styles/main.scss'
 import ControlPanel from './ControlPanel'
 import Invoice from './Inovoice'
+import html2pdf from 'html2pdf.js'
+import jsPDF from 'jspdf'
+import html2canvas from 'html2canvas';
 
 const Main = () => {
 
@@ -42,6 +45,12 @@ const Main = () => {
     const [finalSubTotal, setFinalSubTotal] = useState();
     const [finalAllTotal, setFinalAllTotal] = useState();
 
+    const [noteHead, setNoteHead] = useState('Notes');
+    const [noteData, setNoteData] = useState('It was great doing Business with you.');
+
+    const [conditions, setConditions] = useState('Terms and Conditions');
+    const [conditionsData, setConditionsData] = useState('Please make the payment by the due date.');
+
     useEffect(() => {
 
         setAmountValue(Number(rateValue) * Number(quantityValue));
@@ -67,21 +76,26 @@ const Main = () => {
         setFinalAllTotal(total);
     }, [items]);
 
-    const handleClick = () => {
-        console.log(title);
+    const handleDeleteItem = (index) => {
+        const updatedItems = [...items];
+        updatedItems.splice(index, 1);
+        setItems(updatedItems);
+    }
 
-        console.log(sellerCompany);
-        console.log(sellerName);
-        console.log(companyAddress);
-        console.log(sellerCity);
-        console.log(country);
+    const inovicePDF = useRef();
 
-        console.log(receiverBill);
-        console.log(clientComp);
-        console.log(clientAddress);
-        console.log(receiverCity);
-        console.log(clientCountry);
+    const handleClick = async () => {
+        const canvas = await html2canvas(inovicePDF.current);
+        const imgData = canvas.toDataURL('image/png');
 
+        const pdf = new jsPDF();
+        const imgProps = pdf.getImageProperties(imgData);
+        const pdfWidth = pdf.internal.pageSize.getWidth();
+        const pdfHeight = (imgProps.height * pdfWidth) / imgProps.width;
+
+        pdf.addImage(imgData, 'PNG', 0, 0, pdfWidth, pdfHeight);
+        pdf.save('invoice.pdf');
+        // pdf.output('dataurlnewwindow')
     }
 
     return (
@@ -117,47 +131,51 @@ const Main = () => {
                     <div className="table-hdr">
                         <div className="tble-tp">
                             <input id="itemDescription" name="itemDescription" className='tble-des description' type="text" value={itemDesc} onChange={(e) => setDescription(e.target.value)} />
-                            <input id="itemQuantity" name="itemQuantity" className='tble-des' type="text" value={qty} onChange={(e) => setQty(e.target.value)} />
-                            <input id="itemRate" name="itemRate" className='tble-des' type="text" value={rate} onChange={(e) => setRate(e.target.value)} />
-                            <input id="itemTax" name="itemTax" className='tble-des' type="text" value={tax} onChange={(e) => setTax(e.target.value)} />
-                            <input id="itemAmount" name="itemAmount" className='tble-des' type="text" value={amount} onChange={(e) => setAmount(e.target.value)} />
+                            <input id="itemQuantity" name="itemQuantity" className='tble-des nonDescription' type="text" value={qty} onChange={(e) => setQty(e.target.value)} />
+                            <input id="itemRate" name="itemRate" className='tble-des nonDescription' type="text" value={rate} onChange={(e) => setRate(e.target.value)} />
+                            <input id="itemTax" name="itemTax" className='tble-des nonDescription' type="text" value={tax} onChange={(e) => setTax(e.target.value)} />
+                            <input id="itemAmount" name="itemAmount" className='tble-des nonDescription' type="text" value={amount} onChange={(e) => setAmount(e.target.value)} />
                         </div>
                     </div>
                     <div className="item-list-cnt">
                         {items.map((item, index) => (
-                            <div key={index} className="item-list">
-                                <textarea
-                                    className="itemDescription"
-                                    placeholder="Enter Item Name/Description"
-                                    value={item.description}
-                                    onChange={(e) => updateItem(index, 'description', e.target.value)}
-                                />
-                                <input
-                                    type="number"
-                                    className="qtyValue"
-                                    value={item.qty}
-                                    onChange={(e) => updateItem(index, 'qty', Number(e.target.value))}
-                                />
-                                <input
-                                    type="number"
-                                    step="0.01"
-                                    className="rateValue"
-                                    value={item.rate}
-                                    onChange={(e) => updateItem(index, 'rate', parseFloat(e.target.value))}
-                                />
-                                <input
-                                    type="number"
-                                    className="taxValue"
-                                    value={item.tax}
-                                    onChange={(e) => updateItem(index, 'tax', Number(e.target.value))}
-                                />
-                                <input
-                                    type="text"
-                                    className="amountValue"
-                                    readOnly
-                                    value={(item.qty * item.rate).toFixed(2)}
-                                />
-                            </div>
+                            <>
+                                <div key={index} className="item-list">
+                                    <textarea
+                                        className="itemDescription"
+                                        placeholder="Enter Item Name/Description"
+                                        value={item.description}
+                                        onChange={(e) => updateItem(index, 'description', e.target.value)}
+                                    />
+                                    <input
+                                        type="number"
+                                        className="qtyValue"
+                                        value={item.qty}
+                                        onChange={(e) => updateItem(index, 'qty', Number(e.target.value))}
+                                    />
+                                    <input
+                                        type="number"
+                                        step="0.01"
+                                        className="rateValue"
+                                        value={item.rate}
+                                        onChange={(e) => updateItem(index, 'rate', parseFloat(e.target.value))}
+                                    />
+                                    <input
+                                        type="number"
+                                        className="taxValue"
+                                        value={item.tax}
+                                        onChange={(e) => updateItem(index, 'tax', Number(e.target.value))}
+                                    />
+                                    <input
+                                        type="text"
+                                        className="amountValue"
+                                        readOnly
+                                        value={(item.qty * item.rate).toFixed(2)}
+                                    />
+                                    <button title='Delete Item' onClick={() => handleDeleteItem(index)} className="delete-btn">✕</button>
+                                </div>
+
+                            </>
                         ))}
                     </div>
                     <div className="cal-cnt">
@@ -180,17 +198,49 @@ const Main = () => {
                         </div>
                     </div>
                     <div className="fnl-txt">
-                        <input type="text" value={'Notes'} className='fnl-nt-inpt' />
-                        <textarea name="" className='fnl-txt-area' value={'It was great doing Bussiness with you.'} id=""></textarea>
+                        <input type="text" value={noteHead} onChange={(e) => setNoteHead(e.target.value)} className='fnl-nt-inpt' />
+                        <textarea name="" className='fnl-txt-area' value={noteData} id="noteData" onChange={(e) => setNoteData(e.target.value)}></textarea>
 
-                        <input type="text" value={'Terms and Conditions'} className='fnl-nt-inpt' />
-                        <textarea name="" className='fnl-txt-area' value={'Please make the payment by the due date.'} id=""></textarea>
+                        <input type="text" value={conditions} onChange={(e) => setConditions(e.target.value)} className='fnl-nt-inpt' />
+                        <textarea name="" className='fnl-txt-area' value={conditionsData} onChange={(e) => setConditionsData(e.target.value)} id=""></textarea>
                     </div>
                 </section>
 
                 <ControlPanel onClick={handleClick} />
             </main>
-            <Invoice titleProp={title} invoiceNumberProp={invoiceNumber} companyNameProp={sellerCompany} sellerNameProp={sellerName} companyAddressProp={companyAddress} sellerCityProp={sellerCity} sellerCountryProp={country}  receiverBillProp={receiverBill} clientCompProp={clientComp} clientAddressProp={clientAddress} receiverCityProp={receiverCity} clientCountryProp={clientCountry} dateProp={date} dueDateProp={dueDate} itemDescriptionProp={itemDesc} qtyProp={qty} taxProp={tax} rateProp={rate} amountProp={amount} items={items} finalSubtotalProp={finalSubTotal} finalAllTotalProp={finalAllTotal}/>
+
+            {/* INVOICE COMPONENT */}
+            <section className='invoice-wrapper'>
+                <Invoice
+                    refProp={inovicePDF}
+                    titleProp={title}
+                    invoiceNumberProp={invoiceNumber}
+                    companyNameProp={sellerCompany}
+                    sellerNameProp={sellerName}
+                    companyAddressProp={companyAddress}
+                    sellerCityProp={sellerCity}
+                    sellerCountryProp={country}
+                    receiverBillProp={receiverBill}
+                    clientCompProp={clientComp}
+                    clientAddressProp={clientAddress}
+                    receiverCityProp={receiverCity}
+                    clientCountryProp={clientCountry}
+                    dateProp={date}
+                    dueDateProp={dueDate}
+                    itemDescriptionProp={itemDesc}
+                    qtyProp={qty}
+                    taxProp={tax}
+                    rateProp={rate}
+                    amountProp={amount}
+                    items={items}
+                    finalSubtotalProp={finalSubTotal}
+                    finalAllTotalProp={finalAllTotal}
+                    noteHeadProp={noteHead}
+                    noteDataProp={noteData}
+                    conditionsProp={conditions}
+                    conditionsDataProp={conditionsData} />
+            </section>
+
         </>
     )
 }
