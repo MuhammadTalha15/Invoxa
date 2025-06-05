@@ -19,6 +19,10 @@ A fast, simple, and user-friendly invoice generator and manager built for freela
 - Styles: Syntactically Awesome Style Sheets (SASS)
 - AI Assistance: ChatGPT, Github Copilot
 
+##  Dependencies Used
+- html2canvas
+- jspdf
+
 ## Future Updates
 I am continuously working to enhance the functionality of my Invoice App. Some of the planned updates include:
 - Working on new UI Design for better Experience of Users.
