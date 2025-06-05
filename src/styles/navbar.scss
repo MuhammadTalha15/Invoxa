@@ -1,4 +1,5 @@
 @import './mixins';
+@import './variables';
 
 .hd {
     position: fixed;
@@ -6,22 +7,23 @@
     width: 100%;
     background-color: #FAFAFA;
     border-bottom: 1px solid #EEEEEE;
-    @include flex(center, space-between, row);
+    @include flex(center, center, row);
     padding: 0 2vmax;
     filter: drop-shadow(0 .1vmax 1vmax #d6d6d6);
 
     .logo {
-        font-size: 2vmax;
+        font-size: 2.3vmax;
         font-family: 'Comfortaa', cursive;
         text-decoration: none;
-        font-weight: 600;
-        color: #111;
+        font-weight: 700;
+        color: $secondaryColorFirst;
         user-select: none;
     }
 
     .btn-wrap {
         height: 2.5vmax;
         width: 18vmax;
+        border: 1px solid;
         @include flex(center, space-evenly, row);
     }
 

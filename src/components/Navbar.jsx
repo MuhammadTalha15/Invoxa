@@ -7,10 +7,10 @@ const Navbar = () => {
             <header className='hd'>
                 <a href="#" className='logo'>INVOXA</a>
 
-                <div className="btn-wrap">
-                    <a href="#" className='sign-in'>Sign In</a>
-                    <a href="#" className='sign-up'>Sign Up</a>
-                </div>
+                {/* <div className="btn-wrap">
+                    <a href="#" className='nav-links'>Help</a>
+                    <a href="#" className='nav-links'>Sign Up</a>
+                </div> */}
 
             </header>
         </>

@@ -1,5 +1,6 @@
 import { useState, useEffect, useRef } from 'react'
 import '../styles/main.scss'
+import '../styles/controlPanel.scss'
 import ControlPanel from './ControlPanel'
 import Invoice from './Inovoice'
 import html2pdf from 'html2pdf.js'
@@ -204,9 +205,11 @@ const Main = () => {
                         <input type="text" value={conditions} onChange={(e) => setConditions(e.target.value)} className='fnl-nt-inpt' />
                         <textarea name="" className='fnl-txt-area' value={conditionsData} onChange={(e) => setConditionsData(e.target.value)} id=""></textarea>
                     </div>
+
+                    <button className='download-btn' onClick={handleClick}>Download Invoice</button>
                 </section>
 
-                <ControlPanel onClick={handleClick} />
+                {/* <ControlPanel onClick={handleClick} /> */}
             </main>
 
             {/* INVOICE COMPONENT */}
