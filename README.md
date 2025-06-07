@@ -9,9 +9,10 @@ A fast, simple, and user-friendly invoice generator and manager built for freela
 - Export invoices as PDF
 - Simple, intuitive UI for quick use
 
-## Screenshots
-
-![Invoice App Screenshot](./public/screenshot.png)
+## Screenshot
+<center>
+<img src="./public/createdBack.png" alt="Invoice App Screenshot" height="600" />
+</center>
 
 ##  Tech Stack
 
