@@ -11,7 +11,7 @@ A fast, simple, and user-friendly invoice generator and manager built for freela
 
 ## Screenshot
 <center>
-<img src="./public/createdBack.png" alt="Invoice App Screenshot" height="600" />
+    <img src="./public/createdBack.png" alt="Invoice App Screenshot" height="600" />
 </center>
 
 ##  Tech Stack
