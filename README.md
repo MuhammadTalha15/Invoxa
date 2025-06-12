@@ -16,7 +16,7 @@ A fast, simple, and user-friendly invoice generator and manager built for freela
 
 ##  Tech Stack
 
-- Frontend: Reacr JS
+- Frontend: React JS
 - Styles: Syntactically Awesome Style Sheets (SASS)
 - AI Assistance: ChatGPT, Github Copilot
 
