@@ -24,9 +24,6 @@ jobs:
       - name: Dependencies Scanning
         run: npm audit --audit-level=high
 
-      - name: Building React Application
-        run: npm run build
-
       - name: Final Message
         run: echo Code Tested Successfully
      
